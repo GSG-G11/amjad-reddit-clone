@@ -1,8 +1,9 @@
 const dummyUser = {
-  name: 'Amjad',
+  name: 'amjad',
   email: 'amjad@gmail.com',
-  password: '123456',
-  confirmPassword: '123456',
+  password: '12345678',
+  confirmPassword: '12345678',
+
 };
 
 module.exports = { dummyUser };

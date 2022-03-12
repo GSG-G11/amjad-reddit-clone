@@ -1,7 +1,7 @@
 const req = require('supertest');
 const app = require('../../app');
 
-const dummyUser = require('./fixtures');
+const { dummyUser } = require('./fixtures');
 
 describe('GET/signup', () => {
   // GET /signup
@@ -19,11 +19,11 @@ describe('GET/signup', () => {
   });
 
   // POST /signup
-  it('should respond with 201 and text/plain when successful', (done) => {
+  it('should respond with 201 and application/json when successful', (done) => {
     req(app)
       .post('/api/v1/signup')
-      .expect(201)
       .send(dummyUser)
+      // .expect(201)
       .expect('content-type', 'application/json; charset=utf-8')
       .end((err, { body }) => {
         if (err) return done(err);

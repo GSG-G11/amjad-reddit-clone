@@ -5,10 +5,9 @@ const signUpSchema = joi.object({
     .required(),
 
   email: joi.string().email().max(100)
-    .regex(/example\.com$/)
     .required(),
 
-  password: joi.string().password().min(8).max(50)
+  password: joi.string().min(8).max(50)
     .required(),
 
   confirmPassword: joi.ref('password'),

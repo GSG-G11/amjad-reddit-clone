@@ -1,8 +1,6 @@
-const { join } = require('path');
 const validRouter = require('express').Router();
+const { handleGetSignUp, handlePostSignUp } = require('../controllers');
 
-validRouter.get('/signup', (req, res) => {
-  res.status(200).sendFile(join(__dirname, '..', '..', 'public', 'pages', 'signup.html'));
-});
+validRouter.route('/signup').get(handleGetSignUp).post(handlePostSignUp);
 
 module.exports = validRouter;
