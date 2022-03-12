@@ -1,7 +1,7 @@
 const req = require('supertest');
 const app = require('../../app');
 
-const { dummyUser } = require('./fixtures');
+const { validCredentials, inValidCredentials } = require('./fixtures');
 
 describe('GET/signup', () => {
   // GET /signup
@@ -17,18 +17,37 @@ describe('GET/signup', () => {
         return done();
       });
   });
+});
 
-  // POST /signup
-  it('should respond with 201 and application/json when successful', (done) => {
+describe('POST/signup', () => {
+  // POST /signup when valid credentials
+  it('should respond with 201 and application/json valid credentials are provided', (done) => {
     req(app)
       .post('/api/v1/signup')
-      .send(dummyUser)
-      // .expect(201)
+      .send(validCredentials)
+      .expect(201)
       .expect('content-type', 'application/json; charset=utf-8')
       .end((err, { body }) => {
         if (err) return done(err);
 
         const expectedMsg = 'account created successfully';
+
+        expect(body.msg).toEqual(expectedMsg);
+        return done();
+      });
+  });
+
+  // POST /signup when invalid credentials
+  it('should respond with 400 and application/json when invalid credentials are provided', (done) => {
+    req(app)
+      .post('/api/v1/signup')
+      .send(inValidCredentials)
+      .expect(400)
+      .expect('content-type', 'application/json; charset=utf-8')
+      .end((err, { body }) => {
+        if (err) return done(err);
+
+        const expectedMsg = 'bad request';
 
         expect(body.msg).toEqual(expectedMsg);
         return done();
