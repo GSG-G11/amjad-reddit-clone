@@ -5,6 +5,12 @@ const handleNotFound = (req, res) => {
 };
 
 const handleInternalError = (err, req, res, next) => {
+  // * my errors
+  if (err.status) return res.status(err.status).json({ msg: err.message });
+
+  // * unexpected errors
+  if (err.details) return res.status(400).json({ msg: 'bad request' });
+
   res.status(500).sendFile(join(__dirname, '..', '..', 'public', 'pages', '500.html'));
 };
 
