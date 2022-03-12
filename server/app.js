@@ -10,12 +10,14 @@ const favicon = require('serve-favicon');
 const { handleNotFound, handleInternalError } = require('./controllers');
 
 const staticRouter = express.static(join(__dirname, '..', 'public'));
+const { validRouter } = require('./routers');
 
 const app = express();
 
 app.use(morgan('tiny'));
 
 app.use('/', staticRouter);
+app.use('/api/v1', validRouter);
 
 app.use(favicon(join(__dirname, '..', 'favicon.ico')));
 app.use(helmet());
