@@ -15,5 +15,5 @@ if (NODE_ENV === 'production') ssl = { rejectUnauthorized: false };
 
 module.exports = new Pool({
   connectionString: dbUrl,
-  ssl: false,
+  ssl,
 });
