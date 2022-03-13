@@ -15,7 +15,7 @@ const postSignup = ({ body }, res, next) => {
       return hash(password, 10)
         .then((hashedPass) => {
           createUser({ username, email, hashedPass })
-            .then(({ rows }) => signToken(rows.at(0).id, JWT_SECRET))
+            .then(({ rows }) => signToken({ ...rows[0].id }, JWT_SECRET))
             .then((token) => res.status(201).cookie('token', token).json({ msg: 'account created successfully' }))
             .catch((next)); // * catch token error
         })

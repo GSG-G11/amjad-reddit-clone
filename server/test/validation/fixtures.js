@@ -1,12 +1,13 @@
 const validCredentials = {
-  name: 'amjad',
+  username: 'amjad',
   email: 'amjad@gmail.com',
   password: '12345678',
   confirmPassword: '12345678',
 };
 
 const inValidCredentials = {
-  name: 'amjad',
+  username: 'amjad',
+  email: 'invalid email',
   password: '12345678',
   confirmPassword: '12345678',
 };

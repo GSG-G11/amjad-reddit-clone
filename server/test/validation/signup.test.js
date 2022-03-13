@@ -19,6 +19,7 @@ describe('GET/signup', () => {
   });
 });
 
+// * POST/signup
 describe('POST/signup', () => {
   // POST /signup when valid credentials
   it('should respond with 201 and application/json valid credentials are provided', (done) => {
