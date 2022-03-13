@@ -12,11 +12,6 @@ describe('CreateUser Query', () => {
       expect(rowCount).toBe(1);
       expect(rows[0]).toHaveProperty('id');
     });
-
-    // * check user is created
-    checkUser('amjad@gmail.com').then(({ rowCount }) => {
-      expect(rowCount).toEqual(1);
-    });
   });
 });
 
