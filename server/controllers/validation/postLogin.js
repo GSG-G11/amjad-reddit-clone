@@ -27,7 +27,7 @@ const postLogin = ({ body }, res, next) => {
 
     .then(() => signToken({ id }, JWT_SECRET))
 
-    .then((token) => res.status(302).cookie(token).json({ msg: 'successfully logged in' }))
+    .then((token) => res.status(302).cookie('token', token).json({ msg: 'successfully logged in' }))
 
     .catch(next);
 };
