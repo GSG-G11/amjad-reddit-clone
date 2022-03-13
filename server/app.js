@@ -8,14 +8,13 @@ const helmet = require('helmet');
 const favicon = require('serve-favicon');
 
 const { handleNotFound, handleInternalError } = require('./controllers');
+const { validRouter } = require('./routers');
 
 const staticRouter = express.static(join(__dirname, '..', 'public'));
-const { validRouter } = require('./routers');
 
 const app = express();
 
 app.use(morgan('tiny'));
-
 app.use(favicon(join(__dirname, '..', 'favicon.ico')));
 app.use(helmet());
 app.use(compression());
