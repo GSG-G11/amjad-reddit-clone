@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 const {
   NODE_ENV, DEV_DB_URL, TEST_DB_URL, PROD_DB_URL,
@@ -14,5 +15,5 @@ if (NODE_ENV === 'production') ssl = { rejectUnauthorized: false };
 
 module.exports = new Pool({
   connectionString: dbUrl,
-  ssl,
+  ssl: false,
 });

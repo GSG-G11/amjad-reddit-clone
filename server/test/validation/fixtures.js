@@ -12,4 +12,14 @@ const inValidCredentials = {
   confirmPassword: '12345678',
 };
 
-module.exports = { validCredentials, inValidCredentials };
+const validDbCredentials = {
+  username: 'amjad2',
+  email: 'validEmail@gmail.com',
+  hashedPass: '#%$!%^$#$@',
+};
+
+module.exports = {
+  validCredentials,
+  inValidCredentials,
+  validDbCredentials,
+};
