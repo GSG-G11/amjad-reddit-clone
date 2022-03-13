@@ -35,7 +35,7 @@ describe('POST /login', () => {
   });
 
   // * invalid credentials
-  it('should return 404 and and application/json when credential is valid', (done) => {
+  it('should return 404 and and application/json when credentials is invalid', (done) => {
     request(app)
       .post('/api/v1/login')
       .send({ email: 'inValid@gmail.com', password: '12345678' })
@@ -50,7 +50,7 @@ describe('POST /login', () => {
   });
 
   // * valid credentials but wrong password
-  it('should return 404 and and application/json when credential is valid', (done) => {
+  it('should return 404 and and application/json when password is invalid', (done) => {
     request(app)
       .post('/api/v1/login')
       .send({ email: 'amjad@gmail.com', password: 'wrongPass' })
