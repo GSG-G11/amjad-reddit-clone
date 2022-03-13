@@ -5,40 +5,35 @@ const { checkUser, createUser } = require('../../database/queries');
 
 afterAll(buildDb);
 
-const { email } = validDbCredentials;
-
 describe('CreateUser Query', () => {
   // * valid credentials
   it('should create user when valid credentials are provided', () => {
-    createUser(validDbCredentials).then(({ rows }) => {
+    createUser(validDbCredentials).then(({ rows, rowCount }) => {
+      expect(rowCount).toBe(1);
       expect(rows[0]).toHaveProperty('id');
-    })
-      .then(() => {
-        checkUser(email).then(({ rowCount }) => {
-          expect(rowCount).toEqual(1);
-        });
-      });
-  });
+    });
 
-  // * invalid credentials
-  it('should not create user when invalid credentials are provided', () => {
-    createUser({}).then(({ rowCount }) => {
-      expect(rowCount).toBe(0);
+    // * check user is created
+    checkUser('amjad@gmail.com').then(({ rowCount }) => {
+      expect(rowCount).toEqual(1);
     });
   });
 });
 
 describe('CheckUser Query', () => {
-  // * invalid email
+  // * email exists
   it('should return email when email already exists', () => {
-    checkUser(email).then(({ rows }) => {
-      expect(rows[0]).toEqual({ email });
+    checkUser('amjad@gmail.com').then(({ rows, rowCount }) => {
+      const expected = rows[0].email;
+
+      expect(expected).toEqual('amjad@gmail.com');
+      expect(rowCount).toEqual(1);
     });
   });
 
-  // * valid email
-  it('should return empty rows array when email is valid', () => {
-    checkUser('amjad2@gmail.com').then(({ rowCount }) => {
+  // * email not exist
+  it('should return empty rows array when email not exist', () => {
+    checkUser('notExist@gmail.com').then(({ rowCount }) => {
       expect(rowCount).toEqual(0);
     });
   });

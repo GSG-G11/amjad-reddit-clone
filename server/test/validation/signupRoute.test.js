@@ -3,9 +3,9 @@ const app = require('../../app');
 const buildDb = require('../../database/config/build');
 const { validCredentials, inValidCredentials } = require('./fixtures');
 
-afterAll(buildDb);
+beforeAll(buildDb);
 
-describe('GET/signup', () => {
+describe.skip('GET/signup', () => {
   // GET /signup
   it('should respond with 200 and text/html when successful', (done) => {
     req(app)

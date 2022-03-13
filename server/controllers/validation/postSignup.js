@@ -7,20 +7,25 @@ const customError = require('../customError');
 const { JWT_SECRET } = process.env;
 
 const postSignup = ({ body }, res, next) => {
-  signUpSchema.validateAsync(body)
-  // * check if email already exists in db
-    .then(({ username, email, password }) => checkUser(email).then(({ rowCount }) => {
-      if (rowCount) return customError({ status: 409, msg: 'email already in use, try using a different one' });
+  const { password, email, username } = body;
 
-      return hash(password, 10)
-        .then((hashedPass) => {
-          createUser({ username, email, hashedPass })
-            .then(({ rows }) => signToken({ ...rows[0].id }, JWT_SECRET))
-            .then((token) => res.status(201).cookie('token', token).json({ msg: 'account created successfully' }))
-            .catch((next)); // * catch token error
-        })
-        .catch(next); //* catch hash error
-    }))
+  signUpSchema
+    .validateAsync(body)
+
+    // * check if email already exists in db
+    .then(() => checkUser(email))
+
+    .then(({ rowCount }) => {
+      rowCount && customError({ status: 409, msg: 'email already in use, try using a different one' });
+    })
+    .then(() => hash(password, 10))
+
+    .then((hashedPass) => createUser({ username, email, hashedPass }))
+
+    .then(({ rows }) => signToken({ ...rows[0].id }, JWT_SECRET))
+
+    .then((token) => res.status(201).cookie('token', token).json({ msg: 'account created successfully' }))
+
     .catch(next);
 };
 
