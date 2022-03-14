@@ -1,6 +1,6 @@
 const validCredentials = {
-  username: 'amjad',
-  email: 'amjad@gmail.com',
+  username: 'amjad2',
+  email: 'amjad2@gmail.com',
   password: '12345678',
   confirmPassword: '12345678',
 };
@@ -13,8 +13,8 @@ const inValidCredentials = {
 };
 
 const validDbCredentials = {
-  username: 'amjad2',
-  email: 'validEmail@gmail.com',
+  username: 'amjad3',
+  email: 'amjad3@gamilc.com',
   hashedPass: '#%$!%^$#$@',
 };
 
