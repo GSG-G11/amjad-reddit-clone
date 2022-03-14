@@ -1,6 +1,6 @@
 const { hash } = require('bcryptjs');
 const signUpSchema = require('../../schemas/signup');
-const { checkUser, createUser } = require('../../database/queries');
+const { checkUser, createUser } = require('../../database/queries/validation');
 const { signToken } = require('../../jwt');
 const customError = require('../errors/customError');
 

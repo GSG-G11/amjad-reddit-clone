@@ -1,5 +1,5 @@
 const { compare } = require('bcryptjs');
-const { checkUser } = require('../../database/queries');
+const { checkUser } = require('../../database/queries/validation');
 const { loginSchema } = require('../../schemas');
 const { customError } = require('../errors');
 const { signToken } = require('../../jwt');
@@ -14,7 +14,6 @@ const postLogin = ({ body }, res, next) => {
     .then(({ email }) => checkUser(email))
 
     .then(({ rowCount, rows }) => {
-      console.log(rowCount);
       if (!rowCount) customError({ status: 404, msg: 'The email you entered isn’t connected to an account. please Create one' });
 
       id = rows[0].id;
