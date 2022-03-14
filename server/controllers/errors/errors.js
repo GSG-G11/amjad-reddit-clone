@@ -1,7 +1,7 @@
 const { join } = require('path');
 
 const handleNotFound = (req, res) => {
-  res.status(404).sendFile(join(__dirname, '..', '..', 'public', 'pages', '404.html'));
+  res.status(404).sendFile(join(__dirname, '..', '..', '..', 'public', 'pages', '404.html'));
 };
 
 const handleInternalError = (err, req, res, next) => {
@@ -11,7 +11,7 @@ const handleInternalError = (err, req, res, next) => {
   // * unexpected errors
   if (err.details) return res.status(400).json({ msg: 'bad request' });
 
-  res.status(500).sendFile(join(__dirname, '..', '..', 'public', 'pages', '500.html'));
+  return res.status(500).sendFile(join(__dirname, '..', '..', '..', 'public', 'pages', '500.html'));
 };
 
 module.exports = { handleNotFound, handleInternalError };

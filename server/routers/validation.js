@@ -1,10 +1,8 @@
 const validRouter = require('express').Router();
-const {
-  handleGetSignUp, handlePostSignUp, handleGetLogin, handlePostLogin,
-} = require('../controllers');
-const auth = require('../middlewares/auth');
 
-validRouter.route('/signup').get(handleGetSignUp).post(handlePostSignUp);
-validRouter.route('/login').get(auth, handleGetLogin).post(handlePostLogin);
+const { handlePostLogin, handlePostSignUp } = require('../controllers/validation');
+
+validRouter.route('/signup').post(handlePostSignUp);
+validRouter.route('/login').post(handlePostLogin);
 
 module.exports = validRouter;

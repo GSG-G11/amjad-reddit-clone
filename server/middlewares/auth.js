@@ -3,7 +3,7 @@ const { verifyToken } = require('../jwt');
 const auth = (req, res, next) => {
   const { token } = req.cookies;
 
-  !token && next();
+  if (!token) return next();
 
   const { JWT_SECRET } = process.env;
 

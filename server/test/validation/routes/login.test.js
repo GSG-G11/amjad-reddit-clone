@@ -1,13 +1,13 @@
 const request = require('supertest');
-const buildDb = require('../../database/config/build');
-const app = require('../../app');
+const buildDb = require('../../../database/config/build');
+const app = require('../../../app');
 
 beforeAll(buildDb);
 
 describe.skip('GET /login', () => {
   it('should return 200 and content_type text/html', (done) => {
     request(app)
-      .get('/api/v1/login')
+      .get('/login')
       .expect(200)
       .expect('Content-Type', 'text/html; charset=UTF-8')
       .end((err) => {
@@ -20,11 +20,11 @@ describe.skip('GET /login', () => {
 
 describe('POST /login', () => {
   // * valid credentials
-  it('should return 302 and and application/json when credentials is valid', (done) => {
+  it('should return 200 and and application/json when credentials is valid', (done) => {
     request(app)
-      .post('/api/v1/login')
+      .post('/login')
       .send({ email: 'amjad@gmail.com', password: '12345678' })
-      .expect(302)
+      .expect(200)
       .expect('Content-Type', 'application/json; charset=utf-8')
       .end((err, { body }) => {
         if (err) return done(err);
@@ -37,7 +37,7 @@ describe('POST /login', () => {
   // * invalid credentials
   it('should return 404 and and application/json when credentials is invalid', (done) => {
     request(app)
-      .post('/api/v1/login')
+      .post('/login')
       .send({ email: 'inValid@gmail.com', password: '12345678' })
       .expect(404)
       .expect('Content-Type', 'application/json; charset=utf-8')
@@ -52,7 +52,7 @@ describe('POST /login', () => {
   // * valid credentials but wrong password
   it('should return 404 and and application/json when password is invalid', (done) => {
     request(app)
-      .post('/api/v1/login')
+      .post('/login')
       .send({ email: 'amjad@gmail.com', password: 'wrongPass' })
       .expect(401)
       .expect('Content-Type', 'application/json; charset=utf-8')

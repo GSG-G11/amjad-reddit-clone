@@ -1,9 +1,10 @@
-const buildDb = require('../../database/config/build');
-const connection = require('../../database/config/connection');
-const { validDbCredentials } = require('./fixtures');
-const { checkUser, createUser } = require('../../database/queries');
+const buildDb = require('../../../database/config/build');
+const connection = require('../../../database/config/connection');
+const { validDbCredentials } = require('../fixtures');
+const { checkUser, createUser } = require('../../../database/queries');
 
 afterAll(buildDb);
+afterAll(() => connection.end());
 
 describe('CreateUser Query', () => {
   // * valid credentials
@@ -17,7 +18,7 @@ describe('CreateUser Query', () => {
 
 describe('CheckUser Query', () => {
   // * email exists
-  it('should return email when email already exists', () => {
+  it('should return the queried email exists in db', () => {
     checkUser('amjad@gmail.com').then(({ rows, rowCount }) => {
       const expected = rows[0].email;
 
@@ -27,11 +28,9 @@ describe('CheckUser Query', () => {
   });
 
   // * email not exist
-  it('should return empty rows array when email not exist', () => {
+  it('should return empty rows array when email not exist in db', () => {
     checkUser('notExist@gmail.com').then(({ rowCount }) => {
       expect(rowCount).toEqual(0);
     });
   });
 });
-
-afterAll(() => connection.end());
