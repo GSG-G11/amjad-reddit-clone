@@ -1,0 +1,159 @@
+:root {
+  --main-color: #0079d3;
+  --link-color: #3394dc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: IBMPlexSans, Arial, sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+a:hover {
+  color: var(--link-color);
+}
+
+nav {
+  min-width: 100vw;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  position: fixed;
+  background-color: white;
+  color: black;
+  align-items: center;
+}
+
+.logo {
+  width: 10rem;
+  margin: 2rem 0 2rem 4rem;
+}
+
+img {
+  width: 100%;
+}
+
+nav .signupBtn {
+  margin: 2rem 4rem;
+  padding: 1rem 1.5rem;
+  border-radius: 28px;
+  border: none;
+  outline: none;
+  background: var(--main-color);
+}
+
+nav .signupBtn a {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background: url('../assets/bg.png') no-repeat;
+  background-size: contain;
+  background-attachment: scroll;
+  background-color: #eeeeee;
+}
+
+.login-side {
+  margin-left: 35rem;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 6rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+header .title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.2rem;
+}
+
+.userAgreement {
+  font-family: Noto Sans, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  margin-top: 0.8rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+:is(.login-form) input {
+  height: 5rem;
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: #fcfcfb;
+  outline: none;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+}
+
+:is(.login-form) input:hover::placeholder {
+  transition: all 0.3s;
+  transform: translateY(-1.3rem);
+  font-size: 1.05rem;
+}
+
+.login-form .submitBtn {
+  font-family: Noto Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 18px;
+  text-transform: unset;
+  background: var(--main-color);
+  border-radius: 999px;
+  color: #fff;
+  height: 40px;
+  padding: 0 16px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.signup-link {
+  font-family: Noto Sans, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    background-image: none;
+  }
+  .login-side {
+    margin-inline: 3rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .login-side {
+    margin-left: 40rem;
+  }
+}
