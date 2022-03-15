@@ -68,7 +68,6 @@ nav .signupBtn a {
 .login-side {
   margin-left: 35rem;
   display: flex;
-  height: 100vh;
   flex-direction: column;
   justify-content: space-evenly;
   margin-top: 6rem;
