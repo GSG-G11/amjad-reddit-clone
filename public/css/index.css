@@ -1,14 +1,222 @@
 :root {
+  --main-color: #0079d3;
+  --link-color: #3394dc;
 }
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: IBMPlexSans, Arial, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 10px;
 }
 
 body {
+  background-color: #eeeeee;
+  min-height: 100vh;
+}
+.container {
+  margin-inline: auto;
+}
+
+@media (min-width: 567px) {
+  .container {
+    width: 550px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 950px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1150px;
+  }
+}
+
+img {
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+a:hover {
+  color: var(--link-color);
+}
+
+nav {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  position: sticky;
+  background-color: white;
+  color: black;
+  align-items: center;
+}
+
+.logo {
+  width: 10rem;
+  margin: 2rem 0 2rem 4rem;
+}
+.logo img {
+  width: 100%;
+}
+
+nav .btns {
+  margin: 2rem 4rem;
+  padding: 1rem 1.5rem;
+}
+
+nav .btns button {
+  color: white;
+  font-size: 1.5rem;
+  background: var(--main-color);
+  border: none;
+  border-radius: 28px;
+  margin-left: 3rem;
+  outline: none;
+}
+
+nav .btns .loginBtn {
+  background: white;
+  border: 1px solid var(--main-color);
+}
+
+nav .btns a {
+  font-weight: bold;
+  padding: 0.9rem 5rem;
+  display: block;
+}
+nav .btns .loginBtn a {
+  color: var(--main-color);
+}
+:is(nav .btns) .singupBtn a,
+.logoutBtn a {
+  color: white;
+}
+
+nav .btns .logoutBtn {
+ padding: 0.9rem 5rem;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: var(--main-color);
+  border: none;
+  border-radius: 28px;
+  margin-left: 3rem;
+  outline: none;
+}
+
+main {
+  display: flex;
+}
+
+main .posts {
+  margin-top: 5rem;
+}
+
+main .post {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: 3rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+main .header {
+  display: flex;
+  gap: 1rem;
+  padding-block: 1rem;
+  align-items: center;
+}
+
+main .post .header .votes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+main .post .votes i {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+main .post .votes .votes-num {
+  font-size: 1.2rem;
+}
+
+main .post .profile-pic {
+  border-radius: 50%;
+  width: 20px;
+}
+
+main .header .author {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+main .header .date {
+  font-style: italic;
+  color: #434141;
+}
+
+main .post .content {
+  padding: 1rem;
+  line-height: 2.1rem;
+  font-size: 1.5rem;
+}
+picture {
+  display: block;
+}
+picture img {
+  width: 100%;
+}
+
+main .actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 3rem;
+}
+
+main .post .actions .action {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  main .posts .post {
+    max-width: initial;
+  }
+}
+
+@media (max-width: 650px) {
+  nav .btns {
+    display: grid;
+    gap: 10px;
+  }
+  nav .btns button {
+    font-size: initial;
+  }
+
+  nav .btns .btn a {
+    padding: 6px 15px;
+  }
 }

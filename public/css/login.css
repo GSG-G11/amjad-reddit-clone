@@ -100,6 +100,31 @@ header .title {
   gap: 3rem;
 }
 
+
+.errorMsg {
+  color: red;
+  text-align: center;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+
+}
+
+.badInput {
+  border: 2px solid red !important;
+}
+
+.goodInput {
+  border: 2px green solid !important;
+}
+
+.msg {
+  color:var(--main-color);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
 :is(.login-form) input {
   height: 5rem;
   padding: 2rem;
@@ -107,7 +132,6 @@ header .title {
   border-radius: 4px;
   background-color: #fcfcfb;
   outline: none;
-  text-transform: uppercase;
   border-radius: 0.5rem;
 }
 

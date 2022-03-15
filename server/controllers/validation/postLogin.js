@@ -28,10 +28,9 @@ const postLogin = ({ body }, res, next) => {
     })
 
     .then((isMatch) => !isMatch && customError({ status: 401, msg: 'The password you’ve entered is incorrect' }))
-
     .then(() => signToken({ id }, JWT_SECRET))
 
-    .then((token) => res.cookie('token', token).json({ msg: 'successfully logged in' }))
+    .then((token) => res.cookie('token', token).json({ msg: 'successfully logged in', status: 200 }))
 
     .catch(next);
 };

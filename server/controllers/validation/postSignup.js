@@ -16,7 +16,7 @@ const postSignup = ({ body }, res, next) => {
     .then(() => checkUser(email))
 
     .then(({ rowCount }) => rowCount &&
-    customError({ status: 409, msg: 'email already in use, try using a different one' }))
+    customError({ status: 409, msg: 'email already in use, try using a different one!!' }))
 
     .then(() => hash(password, 10))
 
@@ -24,7 +24,7 @@ const postSignup = ({ body }, res, next) => {
 
     .then(({ rows }) => signToken({ id: rows[0] }, JWT_SECRET))
 
-    .then((token) => res.status(201).cookie('token', token).json({ msg: 'account created successfully' }))
+    .then((token) => res.status(201).cookie('token', token).json({ msg: 'account created successfully', status: 201 }))
 
     .catch(next);
 };
