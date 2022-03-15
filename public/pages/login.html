@@ -35,8 +35,10 @@
           </p>
         </header>
         <form class="login-form">
-          <input type="email" id="email" max="100" required placeholder="email" />
-          <input type="password" id="password" min="8" max="50" placeholder="password" />
+          <div class="errorMsg"></div>
+          <div class="msg"></div>
+          <input type="email" id="email" max="100" required placeholder="Email" />
+          <input type="password" id="password" min="8" max="50" placeholder="Password" />
           <button class="submitBtn" type="submit">Log In</button>
           <p class="signup-link">
             New to Reddit? <strong> <a href="/signup">SIGN UP </a> </strong>
@@ -44,5 +46,8 @@
         </form>
       </div>
     </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/validation/login.js"></script>
   </body>
 </html>
