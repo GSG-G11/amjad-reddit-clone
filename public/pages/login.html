@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <title>login</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="../assets/logo.png" alt="reddit-logo">
+      </div>
+      <button class="signupBtn">
+        <a href="/signup">Sign Up</a>
+      </button>
+    </nav>
+
+    <div class="login-container">
+      <div class="login-side">
+        <header>
+          <h3 class="title">Login</h3>
+          <p class="userAgreement">
+            By continuing, you agree to our
+            <a target="_blank" href="https://www.redditinc.com/policies/user-agreement"
+            >User Agreement</a
+            >
+            and
+            <a target="_blank" href="https://www.redditinc.com/policies/privacy-policy"
+            >Privacy Policy.</a
+            >
+          </p>
+        </header>
+        <form class="login-form">
+          <input type="email" id="email" max="100" required placeholder="email" />
+          <input type="password" id="password" min="8" max="50" placeholder="password" />
+          <button class="submitBtn" type="submit">Log In</button>
+          <p class="signup-link">
+            New to Reddit? <strong> <a href="/signup">SIGN UP </a> </strong>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
