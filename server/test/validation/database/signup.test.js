@@ -1,7 +1,7 @@
 const buildDb = require('../../../database/config/build');
 const connection = require('../../../database/config/connection');
 const { validDbCredentials } = require('../fixtures');
-const { checkUser, createUser } = require('../../../database/queries');
+const { checkUser, createUser } = require('../../../database/queries/validation');
 
 afterAll(buildDb);
 afterAll(() => connection.end());

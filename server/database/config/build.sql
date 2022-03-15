@@ -31,10 +31,39 @@ CREATE TABLE likes (
   post_id INT NOT NULL,
   FOREIGN KEY (post_id) REFERENCES posts(id)
 );
+
 INSERT INTO users (username, email, password)
 VALUES (
     'amjad',
     'amjad@gmail.com',
     '$2a$10$SncprmtVMyHnBMXvuOFzeOpaY1eK6IDci45ySdgjZKeqDNwDeoPYi'
+  );
+
+INSERT INTO users (username, email, password)
+VALUES (
+    'mohamad',
+    'mohamad@gmail.com',
+    '$2a$10$SncprmtVMyHnBMXvuOFzeOpaY1eK6IDci45ySdgjZKeqDNwDeoPYi'
+  );
+
+INSERT INTO posts (content, date, user_id)
+VALUES (
+    'good morning everyone!',
+    '1/2/2022',
+    '1'
+  );
+
+INSERT INTO comments (content, date, user_id, post_id)
+VALUES (
+    'good morning to you too',
+    '1/2/2022',
+    '2',
+    '1'
+  );
+
+INSERT INTO likes (count, post_id)
+VALUES (
+    '5',
+    '1'
   );
 COMMIT;

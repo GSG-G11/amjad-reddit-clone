@@ -1,6 +1,6 @@
 const { hash } = require('bcryptjs');
 const signUpSchema = require('../../schemas/signup');
-const { checkUser, createUser } = require('../../database/queries');
+const { checkUser, createUser } = require('../../database/queries/validation');
 const { signToken } = require('../../jwt');
 const customError = require('../errors/customError');
 
@@ -22,7 +22,7 @@ const postSignup = ({ body }, res, next) => {
 
     .then((hashedPass) => createUser({ username, email, hashedPass }))
 
-    .then(({ rows }) => signToken(rows[0], JWT_SECRET))
+    .then(({ rows }) => signToken({ id: rows[0] }, JWT_SECRET))
 
     .then((token) => res.status(201).cookie('token', token).json({ msg: 'account created successfully' }))
 

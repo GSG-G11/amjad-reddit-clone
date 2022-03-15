@@ -5,7 +5,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 
 const { handleNotFound, handleInternalError } = require('./controllers/errors');
-const { validRouter, staticRouter } = require('./routers');
+const { validRouter, staticRouter, postsRouter } = require('./routers');
 
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(staticRouter, validRouter);
+app.use('/api/v1', postsRouter);
 app.use(express.static(join(__dirname, '..', 'public'))); // ! must be below static router
 app.use(handleNotFound, handleInternalError);
 
