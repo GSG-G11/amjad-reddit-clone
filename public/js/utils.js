@@ -1,9 +1,6 @@
 const postsContainer = document.querySelector('.posts');
 const errorMsg = document.querySelector('.errorMsg');
 const name = document.querySelector('.name');
-const spin = document.querySelector('.spin');
-spin.style.display = 'block';
-
 const request = (url, method, data) =>
   fetch(url, {
     method,
@@ -55,8 +52,6 @@ const renderPost = (posts) => {
       type,
       avatar,
     }) => {
-      spin.style.display = 'none';
-
       if (type && type.trim() === 'up') {
         votesCount += 1;
       }
@@ -113,15 +108,19 @@ const renderPost = (posts) => {
       postsContainer.prepend(postCard);
 
       voteUp.addEventListener('click', (e) => {
-        request(`/api/v1/voteUp/${userId}`, 'PUT', { postId: postCard.id }).then(({ status }) => {
-          window.location.reload();
-        });
+        request(`/api/v1/voteUp/${userId}`, 'PUT', { postId: postCard.id }).then(
+          ({ status }) => {
+            window.location.reload();
+          },
+        );
       });
 
       voteDown.addEventListener('click', () => {
-        request(`/api/v1/voteDown/${userId}`, 'PUT', { postId: postCard.id }).then(({ status }) => {
-          window.location.reload();
-        });
+        request(`/api/v1/voteDown/${userId}`, 'PUT', { postId: postCard.id }).then(
+          ({ status }) => {
+            window.location.reload();
+          },
+        );
       });
 
       getUserId().then((myId) => {
