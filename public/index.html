@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/spinner.css" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -16,25 +17,32 @@
     <title>Reddit clone</title>
   </head>
   <body>
+
     <nav>
+
       <div class="logo">
         <a href="/">
           <img src="../assets/logo.png" alt="reddit-logo" />
         </a>
       </div>
 
+      <div class="name"></div>
       <div class="btns"></div>
     </nav>
     <form class="postForm">
+
       <div class="errorMsg"></div>
-      <textarea cols="30" rows="10" class="content" placeholder="start writing you post" ></textarea>
+      <textarea cols="30" rows="10" class="content" placeholder="Start Posting"></textarea>
       <input type="url" class="url" placeholder="image url" />
       <div class="action">
         <button type="submit" class="btn create-post-btn">Create Post</button>
         <button type="button" class="btn cancel-post-btn">Cancel</button>
       </div>
+      <div class="spin"></div>
+
     </form>
     <main>
+
       <div class="container">
         <div class="posts"></div>
       </div>

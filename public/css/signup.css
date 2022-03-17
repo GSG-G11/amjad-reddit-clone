@@ -97,7 +97,17 @@ header .title {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
+}
+
+.our-vision {
+  font-size: 1.5rem;
+    color: #0001ab;
+    line-height: 1.6;
+    text-align: left;
+}
+.our-vision::first-line {
+  color: red;
 }
 
 .errorMsg {

@@ -47,8 +47,6 @@ body {
   }
 }
 
-
-
 a {
   text-decoration: none;
   color: var(--main-color);
@@ -169,7 +167,7 @@ textarea:focus {
 textarea.content {
   width: 50%;
   padding: 1rem;
-  height:5rem;
+  height: 5rem;
   resize: none;
 }
 
@@ -181,7 +179,6 @@ textarea.content {
   display: flex;
   gap: 5rem;
 }
-
 
 .postForm .btn {
   display: none;
@@ -199,7 +196,7 @@ textarea.content {
 
 @media (max-width: 550px) {
   textarea.content {
-    width:90%
+    width: 90%;
   }
 
   .postForm .url {
@@ -207,10 +204,9 @@ textarea.content {
   }
 
   .container {
-    margin-inline:2.5rem;
+    margin-inline: 2.5rem;
     width: 100%;
   }
-
 }
 
 main {
@@ -259,6 +255,12 @@ main .header {
   margin-right: -1rem;
 }
 
+.name {
+      color: #001eff;
+    font-size: 2.2rem;
+    text-transform: capitalize;
+}
+
 :is(main .post) .editInput,
 .editUrl {
   width: 100%;
@@ -266,16 +268,21 @@ main .header {
   background-color: #ffffff;
   border-radius: 4px;
   margin-bottom: 2rem;
-  border: 1px solid #0042ff;
   box-shadow: none;
   -ms-flex-positive: 1;
   flex-grow: 1;
   height: 38px;
   margin-right: 8px;
+  border: 3px solid #edeff1;
   outline: none;
   display: inline !important;
   padding: 1rem 1.6rem;
   resize: none;
+}
+
+:is(main .post) .editInput:focus,
+.editUrl:focus {
+  border-color: var(--main-color);
 }
 
 main .post .editInput {
@@ -283,7 +290,7 @@ main .post .editInput {
 }
 
 .editUrl {
-  width: 43%;
+  width: 100%;
 }
 
 :is(.confirmBtn, .cancelBtn) {
@@ -310,12 +317,15 @@ main .post .header .votes {
 }
 
 main .post .votes i {
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
+
 }
 
 main .post .votes .votes-num {
-  font-size: 1.2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: blue;
 }
 
 main .post .profile-pic {
@@ -336,7 +346,7 @@ main .header .date {
 main .post .content {
   padding: 1rem;
   line-height: 2.1rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 picture {
   display: block;
