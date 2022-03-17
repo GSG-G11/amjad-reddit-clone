@@ -11,11 +11,11 @@ const getAllPostsQuery = () => connection.query(getAllPostsSql);
 
 const getPostQuery = (userId) => connection.query(getPostSql, [userId]);
 
-const createPostQuery = ({ content, date, userId }) =>
-  connection.query(createPostSql, [content, date, userId]);
+const createPostQuery = ({ content, date, userId, img }) =>
+  connection.query(createPostSql, [content, date, userId, img]);
 
-const editPostQuery = ({ content, postId, userId }) =>
-  connection.query(editPostSql, [content, postId, userId]);
+const editPostQuery = ({ content, postId, userId, img }) =>
+  connection.query(editPostSql, [content, postId, userId, img]);
 
 const deletePostQuery = ({ userId, postId }) => connection.query(deleteSqlQuery, [postId, userId]);
 

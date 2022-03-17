@@ -1,6 +1,6 @@
 const btns = document.querySelector('.btns');
 
-// ? conditional rendering  logout button
+// ? conditional rendering logout button
 if (document.cookie) {
   const logoutBtn = createEl('button', 'btn logoutBtn');
 
