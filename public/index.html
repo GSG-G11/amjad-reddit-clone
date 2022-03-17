@@ -25,7 +25,15 @@
 
       <div class="btns"></div>
     </nav>
-
+    <form class="postForm">
+      <div class="errorMsg"></div>
+      <textarea cols="30" rows="10" class="content" placeholder="start writing you post" ></textarea>
+      <input type="url" class="url" placeholder="image url" />
+      <div class="action">
+        <button type="submit" class="btn create-post-btn">Create Post</button>
+        <button type="button" class="btn cancel-post-btn">Cancel</button>
+      </div>
+    </form>
     <main>
       <div class="container">
         <div class="posts"></div>
@@ -34,5 +42,6 @@
 
     <script src="./js/utils.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/createPost.js"></script>
   </body>
 </html>

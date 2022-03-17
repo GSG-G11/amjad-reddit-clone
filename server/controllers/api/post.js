@@ -6,6 +6,7 @@ const {
   deletePostQuery,
 } = require('../../database/queries/api/post');
 const { destructure, checkAuth } = require('../../utils');
+const { postSchema, editPostSchema } = require('../../schemas');
 
 // * get all posts
 const getAllPosts = (req, res, next) =>
@@ -26,22 +27,26 @@ const getPost = (req, res, next) => {
 
 // * create post
 const createPost = (req, res, next) => {
-  const { tokenId, userId, content, date } = destructure(req);
-
+  const { tokenId, userId, content, date, img } = destructure(req);
   checkAuth(tokenId, userId);
 
-  return createPostQuery({ content, date, userId })
-    .then(() => res.status(201).end())
+  postSchema
+    .validateAsync({ content, date })
+    .then(() =>
+      createPostQuery({ content, date, userId, img }).then(({ rows }) =>
+        res.status(201).send(rows)))
     .catch(next);
 };
 
 // * edit post
 const editPost = (req, res, next) => {
-  const { tokenId, userId, postId, content } = destructure(req);
+  const { tokenId, userId, postId, content, img = null } = destructure(req);
 
   checkAuth(tokenId, userId);
-  return editPostQuery({ content, postId, userId })
-    .then(() => res.status(204).end())
+
+  editPostSchema
+    .validateAsync({ content })
+    .then(() => editPostQuery({ content, postId, userId, img }).then(() => res.status(204).end()))
     .catch(next);
 };
 
@@ -52,7 +57,7 @@ const deletePost = (req, res, next) => {
   checkAuth(tokenId, userId);
 
   deletePostQuery({ userId, postId })
-    .then(() => res.status(204).end())
+    .then(() => res.status(204).send({ status: 401, msg: 'Post Deleted' }))
     .catch(next);
 };
 

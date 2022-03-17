@@ -7,7 +7,7 @@ const checkAuth = (tokenId, userId) => {
 const destructure = (req) => {
   const {
     id: tokenId,
-    body: { content, postId, date },
+    body: { content, postId, date, img },
     params: { id: userId },
   } = req;
 
@@ -17,6 +17,7 @@ const destructure = (req) => {
     userId,
     postId,
     date,
+    img,
   };
 };
 
