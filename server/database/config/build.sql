@@ -2,7 +2,7 @@ BEGIN;
 DROP TABLE IF EXISTS users,
 posts,
 comments,
-likes CASCADE;
+votes CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(100) NOT NULL,
@@ -27,11 +27,13 @@ CREATE TABLE comments (
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (post_id) REFERENCES posts(id)
 );
-CREATE TABLE likes (
+CREATE TABLE votes (
   id SERIAL PRIMARY KEY,
-  count INT,
+  type CHAR(4) NOT NULL,
   post_id INT NOT NULL,
-  FOREIGN KEY (post_id) REFERENCES posts(id)
+  user_id INT NOT NULL,
+  FOREIGN KEY (post_id) REFERENCES posts(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 INSERT INTO users (username, email, password, avatar)
 VALUES (
@@ -47,5 +49,4 @@ VALUES (
     '$2a$10$SncprmtVMyHnBMXvuOFzeOpaY1eK6IDci45ySdgjZKeqDNwDeoPYi',
     'https://randomuser.me/api/portraits/lego/2.jpg'
   );
-
 COMMIT;

@@ -34,6 +34,6 @@ form.addEventListener('submit', (e) => {
     .then((data) => data.json())
     .then(({ msg, status }) => {
       resMsg.innerText = msg;
-      status === 200 && setTimeout(() => window.location.assign('/'), 1000);
+      status === 200 && window.location.assign('/');
     });
 });

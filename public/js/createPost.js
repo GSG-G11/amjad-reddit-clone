@@ -49,7 +49,6 @@ postForm.addEventListener('submit', (e) => {
   (async () => {
     const userId = await getUserId();
 
-    console.log(userId);
     await request(`/api/v1/post/${userId}`, 'POST', postContent);
 
     const response = await request(`/api/v1/post/${userId}`);
@@ -63,7 +62,7 @@ postForm.addEventListener('submit', (e) => {
     const lastPost = userPosts.filter(
       (post, i, arr) => arr.indexOf(post) === arr.indexOf(arr.at(-1)),
     );
-
+    cancelForm();
     renderPost(lastPost);
   })();
 

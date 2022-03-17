@@ -9,7 +9,7 @@ let ssl = false;
 if (NODE_ENV === 'dev') dbUrl = DEV_DB_URL;
 if (NODE_ENV === 'test') dbUrl = TEST_DB_URL;
 
-if (NODE_ENV === 'production') ssl = { rejectUnauthorized: false };
+if (NODE_ENV === 'prod') ssl = { rejectUnauthorized: false };
 
 module.exports = new Pool({
   connectionString: dbUrl,
