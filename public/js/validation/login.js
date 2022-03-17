@@ -5,7 +5,8 @@ const resMsg = document.querySelector('.msg');
 
 // email input Validation
 email.addEventListener('input', () => {
-  const emailIsValid = email.value.includes('@') && email.value.includes('.com');
+  const emailIsValid = ['@', '.com', 'mail'].every((str) => email.value.includes(str));
+
   validateInput(email, emailIsValid, 'Please enter a valid email');
 });
 
@@ -18,7 +19,8 @@ password.addEventListener('input', () => {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const emailIsValid = email.value.includes('@') && email.value.includes('.com');
+  const emailIsValid = ['@', '.com', 'mail'].every((str) => email.value.includes(str));
+
   const passIsValid = password.value.trim().length > 7 && password.value.trim().length < 50;
 
   const isFormValid = emailIsValid && passIsValid;
