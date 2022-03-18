@@ -225,6 +225,7 @@ main .post {
   background: white;
   padding: 2rem;
   border-radius: 10px;
+  word-break: break-word;
 }
 
 main .info-container {
